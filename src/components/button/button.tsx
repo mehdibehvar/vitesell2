@@ -6,12 +6,13 @@ import React from "react";
 const buttonVariants = cva(
   // "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
 
-  "inline-flex  items-center justify-center gap-2 whitespace-nowrap rounded-lg text-sm font-normal hovor:opacity-50 pointer:cursor-pointer disabled:pointer-events-none disabled:opacity-50", 
+  "inline-flex cursor-pointer  items-center justify-center gap-2 whitespace-nowrap rounded-lg text-sm font-normal hovor:opacity-50 pointer:cursor-pointer disabled:pointer-events-none disabled:opacity-50", 
   {
   variants: {
     variant: {
       "default": "bg-primary text-primary-foreground hover:bg-primary-hover hover:opacity-50",
       "white": "bg-white text-white-foreground hover:bg-white-hover hover:opacity-50",
+      "gray": "bg-gray-light text-primary hover:bg-secondary hover:opacity-50",
     },
     size: {
        default: "h-[38px] px-4 py-2",
