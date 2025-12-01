@@ -119,7 +119,6 @@ backend/src/
   routes/
   middleware/
   services/
-  config/
   server.ts
 ```
 

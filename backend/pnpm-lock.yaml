@@ -12,22 +12,22 @@ importers:
         specifier: ^6.0.0
         version: 6.0.0
       config:
-        specifier: ^4.1.0
+        specifier: ^4.1.1
         version: 4.1.1
       debug:
-        specifier: ^4.4.1
+        specifier: ^4.4.3
         version: 4.4.3
       express:
         specifier: ^5.1.0
         version: 5.1.0
       joi:
-        specifier: ^18.0.0
+        specifier: ^18.0.2
         version: 18.0.2
       joi-objectid:
         specifier: ^4.0.2
         version: 4.0.2
       json-server:
-        specifier: ^1.0.0-beta.3
+        specifier: 1.0.0-beta.3
         version: 1.0.0-beta.3
       jsonwebtoken:
         specifier: ^9.0.2
@@ -36,26 +36,26 @@ importers:
         specifier: ^4.17.21
         version: 4.17.21
       mongoose:
-        specifier: ^8.17.1
+        specifier: ^8.20.1
         version: 8.20.1
       publo:
-        specifier: ^1.0.0
+        specifier: ^1.1.0
         version: 1.1.0
       pug:
         specifier: ^3.0.3
         version: 3.0.3
       winston:
-        specifier: ^3.17.0
+        specifier: ^3.18.3
         version: 3.18.3
       winston-mongodb:
         specifier: ^7.0.1
         version: 7.0.1(winston@3.18.3)
     devDependencies:
       '@babel/core':
-        specifier: ^7.28.4
+        specifier: ^7.28.5
         version: 7.28.5
       '@babel/preset-env':
-        specifier: ^7.28.3
+        specifier: ^7.28.5
         version: 7.28.5(@babel/core@7.28.5)
       babel-jest:
         specifier: ^30.2.0
