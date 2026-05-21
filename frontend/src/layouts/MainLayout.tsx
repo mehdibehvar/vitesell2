@@ -19,6 +19,11 @@ const MainLayout: React.FC = () => {
                 محصولات
               </a>
             </li>
+                        <li>
+              <a href="/products/pscroll" className="hover:text-primary">
+                محصولات (اسکرول)
+              </a>
+            </li>
             <li>
               <a href="/about" className="hover:text-primary">
                 درباره ما

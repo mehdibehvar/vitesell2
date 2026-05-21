@@ -7,10 +7,11 @@ import About from './pages/About.tsx';
 import AuthLayout from './layouts/AuthLayout.tsx';
 import Login from './pages/auth/Login.tsx';
 import Register from './pages/auth/register.tsx';
-import Products from './pages/Products.tsx';
+import  ProductsList from './pages/Products.tsx';
 import ProductPage from './pages/Product.tsx';
 import Shipping from './pages/Shipping.tsx';
 import MainLayout from './layouts/MainLayout.tsx';
+import ProductListScroll from './pages/Products-scroll.tsx';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -24,7 +25,8 @@ createRoot(document.getElementById('root')!).render(
           <Route  path="/" element={<App />} />
           <Route path="about" element={<About />} />
           <Route path="products">
-            <Route index element={<Products />} />
+            <Route index element={<ProductsList />} />
+            <Route path="pscroll" element={<ProductListScroll />} />
             <Route path=":id" element={<ProductPage />} />
             <Route path="shipping" element={<Shipping />} />
           </Route>
