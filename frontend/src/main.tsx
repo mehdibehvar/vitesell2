@@ -12,6 +12,7 @@ import ProductPage from './pages/Product.tsx';
 import Shipping from './pages/Shipping.tsx';
 import MainLayout from './layouts/MainLayout.tsx';
 import ProductListScroll from './pages/Products-scroll.tsx';
+import TestPage from './pages/challenges/test.tsx';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -29,6 +30,9 @@ createRoot(document.getElementById('root')!).render(
             <Route path="pscroll" element={<ProductListScroll />} />
             <Route path=":id" element={<ProductPage />} />
             <Route path="shipping" element={<Shipping />} />
+          </Route>
+          <Route path="challenges">
+            <Route path="test" element={<TestPage />} />
           </Route>
         </Route>
       </Routes>

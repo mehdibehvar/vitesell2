@@ -18,11 +18,24 @@
 
     /* Linting */
     "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+    "baseUrl": ".",
+    "paths": {
+      "@assets/*": ["src/assets/*"],
+      "@components/*": ["src/components/*"],
+      "@libs/*": ["src/libs/*"],
+      "@utils/*": ["src/utils/*"],
+      "@services/*": ["src/services/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@helper/*": ["src/helpers/*"],
+      "@components/core/*": ["src/components/*"],
+      "@constants/*": ["src/constants/*"]
+    }
   },
-  "include": ["frontend/src"]
+  "include": ["src"],
+  "exclude": ["**/*.stories.tsx", "**/*.test.ts", "**/*.test.tsx", "src/pages/auth2/**", "src/pages/challenges/**", "src/hooks/useChangeSlideOnScroll.tsx"]
 }

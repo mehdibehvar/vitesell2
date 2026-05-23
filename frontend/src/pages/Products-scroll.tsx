@@ -1,14 +1,8 @@
-import { useEffect, useRef, useState } from 'react';
-import { FixedSizeGrid, GridChildComponentProps } from 'react-window';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { FixedSizeGrid } from 'react-window';
+import type { GridChildComponentProps } from 'react-window';
+import type { Product } from '../types/common';
 
-interface Product {
-  id: number;
-  title: string;
-  description: string;
-  price: number;
-  rating: number;
-  thumbnail: string;
-}
 
 const COLUMN_COUNT = 4;
 const CARD_HEIGHT = 400;
@@ -66,7 +60,10 @@ function ProductListScroll() {
 
   const columnWidth = Math.floor(width / COLUMN_COUNT); // ✅ cards fill full width evenly
   const rowCount    = Math.ceil(products.length / COLUMN_COUNT);
-
+const CellRenderer = useMemo(() => {
+  const fn = Cell(products, columnWidth);
+  return fn;
+}, [products, columnWidth]);
   // ✅ containerRef div is ALWAYS rendered — loading/error shown inside it
   return (
     <div ref={containerRef} className="w-full">
@@ -81,7 +78,7 @@ function ProductListScroll() {
           height={900}
           width={width}                    // ✅ dynamic container width
          >
-          {Cell(products, columnWidth)}
+          {CellRenderer}             
         </FixedSizeGrid>
       )}
     </div>  

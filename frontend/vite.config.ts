@@ -12,7 +12,17 @@ const dirname =
 
 // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
+  plugins: [
+    react({
+      babel: {
+        plugins: [
+          // ['babel-plugin-react-compiler'], // ✅ add this
+        ],
+      },
+    }),
+    ,
+    tailwindcss(),
+  ],
   test: {
     projects: [
       {
@@ -41,14 +51,14 @@ export default defineConfig({
       },
     ],
   },
-  resolve:{
-    alias:{
-      "@assets": path.resolve(__dirname, "src/assets"),
-      "@components": path.resolve(__dirname, "src/components"),
-      "@libs": path.resolve(__dirname, "src/libs"),
-      "@utils": path.resolve(__dirname, "src/utils"),
-      "@services": path.resolve(__dirname,"src/services"),
-      "@hooks": path.resolve(__dirname,"src/hooks")
-    }
-  }
+  resolve: {
+    alias: {
+      '@assets': path.resolve(__dirname, 'src/assets'),
+      '@components': path.resolve(__dirname, 'src/components'),
+      '@libs': path.resolve(__dirname, 'src/libs'),
+      '@utils': path.resolve(__dirname, 'src/utils'),
+      '@services': path.resolve(__dirname, 'src/services'),
+      '@hooks': path.resolve(__dirname, 'src/hooks'),
+    },
+  },
 });

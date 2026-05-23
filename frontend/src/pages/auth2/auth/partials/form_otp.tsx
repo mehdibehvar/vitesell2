@@ -6,7 +6,7 @@ import Button from '@components/core/‌Buttons/Button';
 import { authApi } from '@constants/ApiPath';
 import { cm } from '@helper/clsx';
 import RequestHandler from '@services/RequestHandler';
-import Link from 'next/link';
+import { Link } from 'react-router';
 import type React from 'react';
 import { useState } from 'react';
 import { type SubmitHandler, useForm } from 'react-hook-form';
@@ -143,7 +143,7 @@ const FormOtp: React.FC<FormOtpProps> = ({
             <div className="col-6">
               <Link
                 onClick={(): void => handleSetCurrentForm('form-password')}
-                href="#passform"
+                to="#passform"
                 className={cm(
                   't text-base-30 hover:text-primary-50 text-left block',
                   finishedCounter && 'text-right',
@@ -157,7 +157,7 @@ const FormOtp: React.FC<FormOtpProps> = ({
           {finishedCounter && (
             <div className="col-6">
               <Link
-                href={''}
+                to={''}
                 className={cm(
                   't text-base-30 hover:text-primary-50 text-left block',
                   finishedCounter && nextStep === 'continue' && 'text-right',

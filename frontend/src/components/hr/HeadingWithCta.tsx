@@ -1,6 +1,6 @@
 import { cm } from '@helper/clsx';
-import Icon from '@components/core/Icon/Icon';
-import Link from 'next/link';
+import Icon from '@components/icon/icon';
+import { Link } from 'react-router';
 import type React from 'react';
 type HeadingWithCtaProps = {
   title: string;
@@ -37,7 +37,7 @@ const HeadingWithCta: React.FC<HeadingWithCtaProps> = ({
         {href && (
           <Link
             className={`${linkColor} flex rounded-base-sm p-base-xs transition-all duration-500 lg:-translate-x-8 lg:opacity-0 lg:transition-all lg:group-hover/mainlink:translate-x-0 lg:group-hover/mainlink:opacity-100`}
-            href={String(href)}
+            to={String(href)}
           >
             <Icon
               icon={'caret-left-r'}

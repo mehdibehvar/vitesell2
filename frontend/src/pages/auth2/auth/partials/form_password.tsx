@@ -4,8 +4,8 @@ import BackButton from '@components/core/‌Buttons/BackButton';
 import Button from '@components/core/‌Buttons/Button';
 import { authApi } from '@constants/ApiPath';
 import RequestHandler from '@services/RequestHandler';
-import { useSendOtp } from 'hooks/useSendOtp';
-import Link from 'next/link';
+import { useSendOtp } from '@hooks/useSendOtp';
+import { Link } from 'react-router';
 import type React from 'react';
 import { useState } from 'react';
 import { type SubmitHandler, useForm } from 'react-hook-form';
@@ -101,7 +101,7 @@ const FormPassword: React.FC<FormPasswordProps> = ({
                 onClick={(): void =>
                   handleSetCurrentForm('form-forgot-password')
                 }
-                href="#forgetpass"
+                to="#forgetpass"
                 className="t text-base-30 hover:text-primary-50"
               >
                 رمز عبور را فراموش کرده اید؟
@@ -110,7 +110,7 @@ const FormPassword: React.FC<FormPasswordProps> = ({
             <div className="col-6">
               <Link
                 onClick={(): Promise<void> => handleGoToOtpForm()}
-                href="#passform"
+                to="#passform"
                 className="t text-base-30 hover:text-primary-50 text-left block"
               >
                 ورود با کد یکبار مصرف

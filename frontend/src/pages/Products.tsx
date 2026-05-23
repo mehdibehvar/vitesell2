@@ -1,12 +1,7 @@
-import { useEffect, useState } from 'react';
-interface Product {
-  id: number;
-  title: string;
-  description: string;
-  price: number;
-  rating: number;
-  thumbnail: string;
-}
+import { useEffect, useMemo, useState } from 'react';
+import type { Product } from '../types/common';
+import { ProductCard } from '../components/product-cell/product-card';
+
 const ProductsList: React.FC = () => {
   const [products, setProducts] = useState<Product[] | null>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -31,7 +26,11 @@ const ProductsList: React.FC = () => {
         setLoading(false);
       });
   }, []);
+  const start = (currentPage - 1) * PAGE_SIZE;
 
+  const visible = useMemo(() => {
+    return products?.slice(start, start + PAGE_SIZE);
+  }, [products, currentPage]);
   if (loading)
     return (
       <div className="min-h-screen flex justify-center">
@@ -39,25 +38,13 @@ const ProductsList: React.FC = () => {
       </div>
     );
   if (error) return <p>Error loading products: {error.message}</p>;
-  const start = (currentPage - 1) * PAGE_SIZE;
-  const visible = products?.slice(start, start + PAGE_SIZE);
+
   return (
     <main className="p-6">
       <h1 className="text-2xl font-semibold">محصولات</h1>
       <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {visible?.map((product) => (
-          <div key={product.id} className="bg-white rounded-lg shadow-md p-4">
-            <img
-              src={product.thumbnail}
-              alt={product.title}
-              loading="lazy"
-              className="w-full h-48 object-cover rounded-md"
-            />
-            <h2 className="mt-2 text-lg font-medium">{product.title}</h2>
-            <p className="mt-1 text-gray-600">{product.description}</p>
-            <p className="mt-2 text-green-600 font-bold">${product.price}</p>
-            <span className="mt-2 text-sm text-gray-500">Rating: {product.rating}</span>
-          </div>
+          <ProductCard key={product.id} product={product} />
         ))}
       </div>
       <div className="mt-6 flex justify-center space-x-2">
