@@ -1,0 +1,271 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+.card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);margin-bottom:1.5rem;overflow:hidden}
+.card-header{padding:1.25rem 1.5rem 1rem;border-bottom:0.5px solid var(--color-border-tertiary);display:flex;align-items:flex-start;justify-content:space-between;gap:1rem}
+.badge-row{display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap}
+.badge{font-size:11px;font-weight:500;padding:3px 9px;border-radius:99px}
+.b-hard{background:#FCEBEB;color:#A32D2D}
+.b-med{background:#FAEEDA;color:#854F0B}
+.b-easy{background:#EAF3DE;color:#3B6D11}
+.b-tag{background:var(--color-background-secondary);color:var(--color-text-secondary)}
+.card-title{font-size:16px;font-weight:500;color:var(--color-text-primary);margin-bottom:4px}
+.card-sub{font-size:13px;color:var(--color-text-secondary)}
+.timer{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--color-text-secondary);background:var(--color-background-secondary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:4px 10px;white-space:nowrap;flex-shrink:0}
+.body{padding:1.25rem 1.5rem}
+.sec{font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--color-text-secondary);margin-bottom:8px}
+.code{background:#1a1b26;border-radius:var(--border-radius-md);padding:1rem 1.25rem;margin-bottom:1rem;font-family:var(--font-mono);font-size:12.5px;line-height:1.75;overflow-x:auto;color:#a9b1d6}
+.kw{color:#bb9af7}.fn{color:#7dcfff}.str{color:#9ece6a}.num{color:#ff9e64}.cm{color:#565f89;font-style:italic}.op{color:#89ddff}.prop{color:#73daca}
+.obs{background:var(--color-background-secondary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:.85rem 1rem;margin-bottom:1rem}
+.obs li{font-size:13px;color:var(--color-text-secondary);padding:3px 0;display:flex;align-items:flex-start;gap:8px;list-style:none}
+.obs li::before{content:"–";color:var(--color-text-tertiary);flex-shrink:0}
+.task-blue{background:#042C53;border-radius:var(--border-radius-md);padding:.85rem 1rem;margin-bottom:1rem;display:flex;align-items:flex-start;gap:10px}
+.task-amber{background:#412402;border-radius:var(--border-radius-md);padding:.85rem 1rem;margin-bottom:1rem;display:flex;align-items:flex-start;gap:10px}
+.task-teal{background:#04342C;border-radius:var(--border-radius-md);padding:.85rem 1rem;margin-bottom:1rem;display:flex;align-items:flex-start;gap:10px}
+.task-purple{background:#26215C;border-radius:var(--border-radius-md);padding:.85rem 1rem;margin-bottom:1rem;display:flex;align-items:flex-start;gap:10px}
+.ti-blue{font-size:16px;color:#85B7EB;flex-shrink:0;margin-top:1px}
+.ti-amber{font-size:16px;color:#FAC775;flex-shrink:0;margin-top:1px}
+.ti-teal{font-size:16px;color:#5DCAA5;flex-shrink:0;margin-top:1px}
+.ti-purple{font-size:16px;color:#AFA9EC;flex-shrink:0;margin-top:1px}
+.txt-blue{font-size:13px;color:#B5D4F4;line-height:1.6}
+.txt-amber{font-size:13px;color:#FAC775;line-height:1.6}
+.txt-teal{font-size:13px;color:#9FE1CB;line-height:1.6}
+.txt-purple{font-size:13px;color:#CECBF6;line-height:1.6}
+.divider{height:.5px;background:var(--color-border-tertiary);margin:1rem 0}
+.hint-row{display:flex;align-items:center;gap:8px}
+.hint-txt{font-size:13px;color:var(--color-text-tertiary)}
+.hint-btn{font-size:12px;color:#185FA5;background:none;border:.5px solid #B5D4F4;border-radius:var(--border-radius-md);padding:4px 10px;cursor:pointer;font-family:var(--font-sans)}
+.hint-box{display:none;background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:.75rem 1rem;margin-top:8px;font-size:13px;color:var(--color-text-secondary);line-height:1.6}
+.hint-box.open{display:block}
+.req-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:1rem}
+.req-item{background:var(--color-background-secondary);border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:.75rem 1rem;font-size:13px;color:var(--color-text-secondary);display:flex;align-items:flex-start;gap:8px}
+.req-item i{color:var(--color-text-tertiary);flex-shrink:0;margin-top:1px}
+.inline-code{font-family:var(--font-mono);font-size:12px;background:var(--color-background-secondary);padding:1px 5px;border-radius:4px;color:var(--color-text-primary)}
+</style>
+
+<h2 style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">Four React and Next.js technical interview challenges</h2>
+
+<div style="padding:.5rem 0 2rem">
+
+  <!-- Challenge 1: Hooks & Closures -->
+  <div class="card">
+    <div class="card-header">
+      <div style="flex:1">
+        <div class="badge-row">
+          <span class="badge b-med">Medium</span>
+          <span class="badge b-tag"><i class="ti ti-brand-react" aria-hidden="true"></i> React hooks</span>
+          <span class="badge b-tag">Closures</span>
+          <span class="badge b-tag">State</span>
+        </div>
+        <div class="card-title">Fix the stale closure in a counter component</div>
+        <div class="card-sub">Identify why the interval reads wrong values and correct it without breaking the UI</div>
+      </div>
+      <div class="timer"><i class="ti ti-clock" aria-hidden="true"></i> 15 min</div>
+    </div>
+    <div class="body">
+      <div class="sec">Buggy component</div>
+      <div class="code"><span class="kw">import</span> { useState, useEffect } <span class="kw">from</span> <span class="str">'react'</span>;
+
+<span class="kw">function</span> <span class="fn">AutoCounter</span>() {
+  <span class="kw">const</span> [count, setCount] = <span class="fn">useState</span>(<span class="num">0</span>);
+
+  <span class="fn">useEffect</span>(() <span class="op">=></span> {
+    <span class="kw">const</span> id = <span class="fn">setInterval</span>(() <span class="op">=></span> {
+      <span class="fn">setCount</span>(count <span class="op">+</span> <span class="num">1</span>); <span class="cm">// always logs 1, never increments</span>
+    }, <span class="num">1000</span>);
+    <span class="kw">return</span> () <span class="op">=></span> <span class="fn">clearInterval</span>(id);
+  }, []);
+
+  <span class="kw">return</span> <span class="op">&lt;</span>p<span class="op">&gt;</span>Count: {count}<span class="op">&lt;</span>/p<span class="op">&gt;</span>;
+}</div>
+
+      <div class="sec">Observations from the team</div>
+      <div class="obs">
+        <ul>
+          <li>The counter displays 1, 1, 1… instead of 1, 2, 3…</li>
+          <li>Adding <span class="inline-code">count</span> to the deps array "fixes" it but creates a new interval every second</li>
+          <li>The same pattern breaks in a form that auto-saves every 30 s</li>
+        </ul>
+      </div>
+
+      <div class="task-blue">
+        <i class="ti ti-bug ti-blue" aria-hidden="true"></i>
+        <div class="txt-blue">Fix the stale closure. Then explain the <strong style="color:#7dcfff">two valid approaches</strong> and the trade-off between them. Be ready to discuss when each is preferred.</div>
+      </div>
+
+      <div class="divider"></div>
+      <div class="hint-row">
+        <span class="hint-txt">Stuck?</span>
+        <button class="hint-btn" onclick="this.nextElementSibling.classList.toggle('open');this.textContent=this.nextElementSibling.classList.contains('open')?'Hide hint':'Show hint'">Show hint</button>
+        <div class="hint-box">The closure captures <span class="inline-code">count</span> at the time the effect ran. One fix: use the functional updater form <span class="inline-code">setCount(c => c + 1)</span>. The other: use a <span class="inline-code">useRef</span> to hold a mutable reference to the latest count.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Challenge 2: useCallback / re-renders -->
+  <div class="card">
+    <div class="card-header">
+      <div style="flex:1">
+        <div class="badge-row">
+          <span class="badge b-med">Medium</span>
+          <span class="badge b-tag"><i class="ti ti-brand-react" aria-hidden="true"></i> Performance</span>
+          <span class="badge b-tag">Memoization</span>
+          <span class="badge b-tag">useCallback</span>
+        </div>
+        <div class="card-title">Stop a child component from re-rendering on every keystroke</div>
+        <div class="card-sub">A parent's search input causes an expensive list to re-render 100+ times per second</div>
+      </div>
+      <div class="timer"><i class="ti ti-clock" aria-hidden="true"></i> 20 min</div>
+    </div>
+    <div class="body">
+      <div class="sec">Current code</div>
+      <div class="code"><span class="cm">// Parent.jsx</span>
+<span class="kw">function</span> <span class="fn">SearchPage</span>() {
+  <span class="kw">const</span> [query, setQuery] = <span class="fn">useState</span>(<span class="str">''</span>);
+  <span class="kw">const</span> [results, setResults] = <span class="fn">useState</span>(expensiveData);
+
+  <span class="kw">const</span> <span class="fn">handleDelete</span> = (id) <span class="op">=></span> {
+    <span class="fn">setResults</span>(prev <span class="op">=></span> prev.<span class="fn">filter</span>(r <span class="op">=></span> r.id <span class="op">!==</span> id));
+  };
+
+  <span class="kw">return</span> (
+    <span class="op">&lt;&gt;</span>
+      <span class="op">&lt;</span>input <span class="prop">value</span>={query} <span class="prop">onChange</span>={e <span class="op">=></span> <span class="fn">setQuery</span>(e.target.value)} /<span class="op">&gt;</span>
+      <span class="op">&lt;</span><span class="fn">ResultList</span> <span class="prop">items</span>={results} <span class="prop">onDelete</span>={handleDelete} /<span class="op">&gt;</span>
+    <span class="op">&lt;/&gt;</span>
+  );
+}
+
+<span class="cm">// ResultList.jsx — wrapped in React.memo</span>
+<span class="kw">const</span> <span class="fn">ResultList</span> = React.<span class="fn">memo</span>(({ items, onDelete }) <span class="op">=></span> {
+  <span class="cm">// renders 500 rows — expensive</span>
+  <span class="kw">return</span> items.<span class="fn">map</span>(i <span class="op">=></span> <span class="op">&lt;</span><span class="fn">Row</span> key={i.id} item={i} <span class="prop">onDelete</span>={onDelete} /<span class="op">&gt;</span>);
+});</div>
+
+      <div class="sec">Problem observed</div>
+      <div class="obs">
+        <ul>
+          <li><span class="inline-code">React.memo</span> is on <span class="inline-code">ResultList</span> but it still re-renders on every keystroke</li>
+          <li>Profiler shows 60–80 ms render blocking the main thread</li>
+          <li>The team added <span class="inline-code">useCallback</span> to <span class="inline-code">handleDelete</span> but it didn't help</li>
+        </ul>
+      </div>
+
+      <div class="task-amber">
+        <i class="ti ti-speedboat ti-amber" aria-hidden="true"></i>
+        <div class="txt-amber">Explain why <span style="color:#EF9F27"><code>React.memo</code></span> isn't working despite being applied. Fix it correctly and describe when memoization actually hurts performance instead of helping.</div>
+      </div>
+
+      <div class="divider"></div>
+      <div class="hint-row">
+        <span class="hint-txt">Stuck?</span>
+        <button class="hint-btn" onclick="this.nextElementSibling.classList.toggle('open');this.textContent=this.nextElementSibling.classList.contains('open')?'Hide hint':'Show hint'">Show hint</button>
+        <div class="hint-box"><span class="inline-code">React.memo</span> does a shallow comparison of props. Every render creates a <em>new</em> <span class="inline-code">handleDelete</span> function reference — so the prop always looks "changed". Wrap it in <span class="inline-code">useCallback</span> with the correct dependency array. Then ask: what's in the deps array and why?</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Challenge 3: Next.js SSR vs CSR -->
+  <div class="card">
+    <div class="card-header">
+      <div style="flex:1">
+        <div class="badge-row">
+          <span class="badge b-hard">Hard</span>
+          <span class="badge b-tag"><i class="ti ti-triangle" aria-hidden="true"></i> Next.js</span>
+          <span class="badge b-tag">App router</span>
+          <span class="badge b-tag">RSC</span>
+          <span class="badge b-tag">Data fetching</span>
+        </div>
+        <div class="card-title">Architect a dashboard page using the App Router correctly</div>
+        <div class="card-sub">Decide which parts are Server Components, Client Components, or streamed — and justify every choice</div>
+      </div>
+      <div class="timer"><i class="ti ti-clock" aria-hidden="true"></i> 25 min</div>
+    </div>
+    <div class="body">
+      <div class="sec">Page layout to implement</div>
+      <div class="req-grid">
+        <div class="req-item"><i class="ti ti-chart-bar" aria-hidden="true"></i>Revenue chart — fetches from a slow analytics API (~2 s)</div>
+        <div class="req-item"><i class="ti ti-user" aria-hidden="true"></i>User profile header — uses <span class="inline-code">cookies()</span> to identify the logged-in user</div>
+        <div class="req-item"><i class="ti ti-list" aria-hidden="true"></i>Recent activity feed — fast DB query, no interactivity</div>
+        <div class="req-item"><i class="ti ti-bell" aria-hidden="true"></i>Notification bell — client-side polling every 10 s</div>
+        <div class="req-item"><i class="ti ti-search" aria-hidden="true"></i>Search bar — updates URL params on submit</div>
+        <div class="req-item"><i class="ti ti-refresh" aria-hidden="true"></i>Refresh button — calls a Server Action to revalidate cache</div>
+      </div>
+
+      <div class="sec">Constraints</div>
+      <div class="obs">
+        <ul>
+          <li>Must use Next.js 14 App Router — no <span class="inline-code">getServerSideProps</span></li>
+          <li>Revenue chart must not block initial HTML delivery</li>
+          <li>No <span class="inline-code">'use client'</span> on the root layout or any shared wrapper</li>
+          <li>Search state should survive a full page refresh</li>
+        </ul>
+      </div>
+
+      <div class="task-teal">
+        <i class="ti ti-sitemap ti-teal" aria-hidden="true"></i>
+        <div class="txt-teal">Label each component <strong style="color:#5DCAA5">Server</strong>, <strong style="color:#5DCAA5">Client</strong>, or <strong style="color:#5DCAA5">Streamed via Suspense</strong>. Explain what breaks if you mark the wrong one <span class="inline-code" style="color:#9FE1CB;font-family:var(--font-mono);font-size:12px">'use client'</span> and how RSC reduces the client bundle.</div>
+      </div>
+
+      <div class="divider"></div>
+      <div class="hint-row">
+        <span class="hint-txt">Stuck?</span>
+        <button class="hint-btn" onclick="this.nextElementSibling.classList.toggle('open');this.textContent=this.nextElementSibling.classList.contains('open')?'Hide hint':'Show hint'">Show hint</button>
+        <div class="hint-box">Start by asking: does this component use <span class="inline-code">useState</span>, browser APIs, event handlers, or <span class="inline-code">cookies()</span>? If yes → Client. Then ask: is it slow? If yes → wrap it in <span class="inline-code">&lt;Suspense&gt;</span> with a skeleton fallback so it streams in after the shell is delivered.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Challenge 4: Custom Hook -->
+  <div class="card">
+    <div class="card-header">
+      <div style="flex:1">
+        <div class="badge-row">
+          <span class="badge b-hard">Hard</span>
+          <span class="badge b-tag"><i class="ti ti-brand-react" aria-hidden="true"></i> Custom hooks</span>
+          <span class="badge b-tag">TypeScript</span>
+          <span class="badge b-tag">Abstraction</span>
+        </div>
+        <div class="card-title">Build a reusable <span class="inline-code" style="font-size:14px">useFetch</span> hook with cancellation and caching</div>
+        <div class="card-sub">Three components in the same app are copy-pasting the same fetch + loading + error pattern</div>
+      </div>
+      <div class="timer"><i class="ti ti-clock" aria-hidden="true"></i> 30 min</div>
+    </div>
+    <div class="body">
+      <div class="sec">Pattern being duplicated everywhere</div>
+      <div class="code"><span class="cm">// Copied into UserCard, ProductGrid, OrderHistory…</span>
+<span class="kw">const</span> [data, setData] = <span class="fn">useState</span>(<span class="kw">null</span>);
+<span class="kw">const</span> [loading, setLoading] = <span class="fn">useState</span>(<span class="kw">true</span>);
+<span class="kw">const</span> [error, setError] = <span class="fn">useState</span>(<span class="kw">null</span>);
+
+<span class="fn">useEffect</span>(() <span class="op">=></span> {
+  <span class="fn">fetch</span>(url)
+    .<span class="fn">then</span>(res <span class="op">=></span> res.<span class="fn">json</span>())
+    .<span class="fn">then</span>(setData)
+    .<span class="fn">catch</span>(setError)
+    .<span class="fn">finally</span>(() <span class="op">=></span> <span class="fn">setLoading</span>(<span class="kw">false</span>));
+}, [url]);</div>
+
+      <div class="sec">Your hook must handle</div>
+      <div class="req-grid">
+        <div class="req-item"><i class="ti ti-x" aria-hidden="true"></i>Abort in-flight requests when <span class="inline-code">url</span> changes or component unmounts</div>
+        <div class="req-item"><i class="ti ti-database" aria-hidden="true"></i>Simple in-memory cache — don't re-fetch the same URL twice</div>
+        <div class="req-item"><i class="ti ti-refresh" aria-hidden="true"></i>A <span class="inline-code">refetch()</span> function that bypasses the cache on demand</div>
+        <div class="req-item"><i class="ti ti-file-type-ts" aria-hidden="true"></i>Fully typed with TypeScript generics: <span class="inline-code">useFetch&lt;T&gt;(url)</span></div>
+      </div>
+
+      <div class="task-purple">
+        <i class="ti ti-plug ti-purple" aria-hidden="true"></i>
+        <div class="txt-purple">Write the hook from scratch. Then explain how this compares to using a library like <strong style="color:#AFA9EC">React Query</strong> or <strong style="color:#AFA9EC">SWR</strong> — when would you roll your own vs. reach for a library?</div>
+      </div>
+
+      <div class="divider"></div>
+      <div class="hint-row">
+        <span class="hint-txt">Stuck?</span>
+        <button class="hint-btn" onclick="this.nextElementSibling.classList.toggle('open');this.textContent=this.nextElementSibling.classList.contains('open')?'Hide hint':'Show hint'">Show hint</button>
+        <div class="hint-box">Use <span class="inline-code">AbortController</span> inside <span class="inline-code">useEffect</span> and call <span class="inline-code">controller.abort()</span> in the cleanup function. Store the cache as a <span class="inline-code">useRef</span> holding a <span class="inline-code">Map&lt;string, T&gt;</span> so it persists across renders without triggering them.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
