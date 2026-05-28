@@ -2,22 +2,24 @@ import { lazy, Suspense } from 'react';
 import { type RouteObject } from 'react-router';
 import MainLayout from '../layouts/MainLayout.tsx';
 import AuthLayout from '../layouts/AuthLayout.tsx';
+import Home from '../pages/h-ome.tsx';
 
 // Lazy load pages for code splitting and better performance
-const App = lazy(() => import('../App.tsx'));
-const About = lazy(() => import('../pages/About.tsx'));
+//Lazy loading means:“Don’t load something until it’s actually needed.”
+const About = lazy(() => import('../pages/about-us.tsx'));
 const Login = lazy(() => import('../pages/auth/Login.tsx'));
 const Register = lazy(() => import('../pages/auth/register.tsx'));
-const ProductsList = lazy(() => import('../pages/Products.tsx'));
-const ProductPage = lazy(() => import('../pages/Product.tsx'));
-const Shipping = lazy(() => import('../pages/Shipping.tsx'));
-const ProductListScroll = lazy(() => import('../pages/Products-scroll.tsx'));
+const ProductsList = lazy(() => import('../pages/products/index.tsx'));
+const ProductPage = lazy(() => import('../pages/products/Product.tsx'));
+const Shipping = lazy(() => import('../pages/products/Shipping.tsx'));
+const ProductListScroll = lazy(() => import('../pages/products/Products-scroll.tsx'));
 const TestPage = lazy(() => import('../pages/challenges/test.tsx'));
-
+const ContactUs = lazy(() => import('../pages/contact-us.tsx'));
+const Profile = lazy(() => import('../pages/profile.tsx'));
 /**
  * Loading fallback component while lazy-loaded pages load
  */
-const PageLoader = () => (
+export const PageLoader = () => (
   <div className="flex items-center justify-center min-h-screen">
     <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary" />
   </div>
@@ -66,34 +68,22 @@ const productRoutes: RouteObject[] = [
     children: [
       {
         index: true,
-        element: (
-          <LazyPage>
-            <ProductsList />
-          </LazyPage>
-        ),
+        element: <ProductsList />,
       },
       {
         path: 'pscroll',
-        element: (
-          <LazyPage>
-            <ProductListScroll />
-          </LazyPage>
-        ),
+        element: <ProductListScroll />,
       },
       {
         path: ':id',
         element: (
-          <LazyPage>
             <ProductPage />
-          </LazyPage>
         ),
       },
       {
         path: 'shipping',
         element: (
-          <LazyPage>
             <Shipping />
-          </LazyPage>
         ),
       },
     ],
@@ -127,15 +117,23 @@ const appRoutes: RouteObject[] = [
     path: '/',
     element: (
       <LazyPage>
-        <App />
+        <Home />
       </LazyPage>
     ),
   },
   {
     path: 'about',
+    element: <About />,
+  },
+  {
+    path: 'contact-us',
+    element: <ContactUs />,
+  },
+  {
+    path: 'profile',
     element: (
       <LazyPage>
-        <About />
+        <Profile />
       </LazyPage>
     ),
   },

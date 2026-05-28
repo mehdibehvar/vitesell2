@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { FixedSizeGrid } from 'react-window';
 import type { GridChildComponentProps } from 'react-window';
-import type { Product } from '../types/common';
+import type { Product } from '../../types/common';
 
 
 const COLUMN_COUNT = 4;

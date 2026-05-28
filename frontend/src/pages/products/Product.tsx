@@ -1,5 +1,5 @@
 import React from 'react';
-import Product from '../components/product/product';
+import Product from '../../components/product/product';
 
 const sample = {
   title: 'فرش نمونه',

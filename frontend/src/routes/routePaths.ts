@@ -11,7 +11,8 @@ export const ROUTE_PATHS = {
   // Main routes
   HOME: '/',
   ABOUT: '/about',
-
+  CONTACT: '/contact',
+  PROFILE: '/profile',
   // Product routes
   PRODUCTS: '/products',
   PRODUCTS_LIST: '/products',
@@ -22,6 +23,7 @@ export const ROUTE_PATHS = {
   SHIPPING: '/products/shipping',
   CHALLENGES: '/challenges',
   CHALLENGES_TEST: '/challenges/test',
+
 } as const;
 
 /**
@@ -36,3 +38,11 @@ export const generateRoute = (
     return route.replace(`:${key}`, String(value));
   }, path);
 };
+
+// generateRoute(
+//   "/products/:id/:slug",
+//   {
+//     id: 5,
+//     slug: "iphone"
+//   }
+// ); // "/products/5/iphone"

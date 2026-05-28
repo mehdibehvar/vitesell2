@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
-import type { Product } from '../types/common';
-import { ProductCard } from '../components/product-cell/product-card';
+import type { Product } from '../../types/common';
+import { ProductCard } from '../../components/product-cell/product-card';
 
 const ProductsList: React.FC = () => {
   const [products, setProducts] = useState<Product[] | null>([]);
